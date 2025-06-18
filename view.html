@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Students</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Enrolled Students</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Class</th>
+          <th>Grade</th>
+        </tr>
+      </thead>
+      <tbody id="studentTableBody">
+        <!-- Students will be loaded here -->
+      </tbody>
+    </table>
+    <p><a href="index.html">Back to Dashboard</a></p>
+  </div>
+
+  <script src="student.js"></script>
+  <script>
+    const students = getStudents();
+    const tbody = document.getElementById('studentTableBody');
+
+    students.forEach(student => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${student.name}</td>
+        <td>${student.id}</td>
+        <td>${student.class}</td>
+        <td>${student.grade}</td>
+      `;
+      tbody.appendChild(row);
+    });
+  </script>
+</body>
+</html>
